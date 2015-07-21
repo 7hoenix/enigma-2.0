@@ -10,6 +10,7 @@
       rotator = Rotator.new
       input = "a"
       rotation_amount = 7
-      assert_equal "h", rotator.rotate(input, rotation_amount)
+      assert_equal "g", rotator.rotate(input, rotation_amount)
     end
+
  end

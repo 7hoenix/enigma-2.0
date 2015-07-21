@@ -8,6 +8,6 @@ class Rotator
   end
 
   def rotate(input, rotation_amount)
-    map[(map[input] + rotation_amount) % 39]
+    map[(map[input].to_i + rotation_amount) % 39]
   end
 end

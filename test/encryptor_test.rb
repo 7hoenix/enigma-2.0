@@ -1,6 +1,7 @@
 require './test/test_helper.rb'
 require './lib/encryptor.rb'
 require './lib/character_map'
+require './lib/rotator'
 
 class EncryptorTest < Minitest::Test
   def test_it_exists
@@ -20,5 +21,19 @@ class EncryptorTest < Minitest::Test
     encrypted_value = rotator.rotate("a", 6)
 
     assert_equal "f", encrypted_value
+  end
+
+  def test_it_can_encrypt_a_value_using_the_rotator
+    input = "a"
+    encrypted = Encryptor.new(input)
+
+    assert_equal "b", encrypted.encrypt
+  end
+
+  def test_it_can_encrypt_a_different_value_using_the_rotator
+    input = "z"
+    encrypted = Encryptor.new(input)
+
+    assert_equal "9", encrypted.encrypt
   end
 end
