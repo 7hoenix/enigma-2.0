@@ -2,6 +2,7 @@ require './test/test_helper.rb'
 require './lib/encryptor.rb'
 require './lib/character_map'
 require './lib/rotator'
+require './lib/slicer'
 
 class EncryptorTest < Minitest::Test
   def test_it_exists
@@ -25,15 +26,15 @@ class EncryptorTest < Minitest::Test
 
   def test_it_can_encrypt_a_value_using_the_rotator
     input = "a"
-    encrypted = Encryptor.new(input)
+    encryptor = Encryptor.new(input)
 
-    assert_equal "b", encrypted.encrypt
+    assert_equal "b", encryptor.encrypt
   end
 
   def test_it_can_encrypt_a_different_value_using_the_rotator
     input = "z"
-    encrypted = Encryptor.new(input)
+    encryptor = Encryptor.new(input)
 
-    assert_equal "9", encrypted.encrypt
+    assert_equal "9", encryptor.encrypt
   end
 end

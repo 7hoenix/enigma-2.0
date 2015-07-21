@@ -2,15 +2,29 @@ require './lib/rotator'
 require './lib/character_map'
 
 class Encryptor
+  attr_reader :offset, :key
+
   def initialize(message)
     @message = message
+    @encrypted_message = []
+    @key = KeyGenerator.generate
+    @offset = OffsetCalculator.calculate
   end
 
   def encrypt
-    rotator = Rotator.new
-    value = message
-    amount_to_rotate = 9
-    rotator.rotate(value, amount_to_rotate)
+    slices = Slicer.new.slice(message)
+    slices.map do |slice|
+      spot_in_slice = 1
+      slice.map do |character|
+        Rotator.new.rotate(character, rotation_amount(spot_in_slice))
+        spot_in_slice += 1
+      end
+      spot_in_slice = 0
+    end
+  end
+
+  def rotation_amount(spot_in_slice)
+    key[spot_in_slice-1..spot_in_slice] + offset[spot_in_slice]
   end
 
   protected
