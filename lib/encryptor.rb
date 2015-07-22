@@ -23,7 +23,7 @@ class Encryptor
         rotated_character
       end
     end
-    encrypted_message.join
+   encrypted_message.join
   end
 
   def rotation_amount(spot_in_slice)

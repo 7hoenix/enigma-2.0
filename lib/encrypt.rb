@@ -3,6 +3,8 @@ require './lib/file_input'
 require './lib/file_output'
 
 class Encrypt
+  attr_reader :key
+
   def initialize(input_file = ARGV[0], output_file = ARGV[1])
     @input_file = input_file
     @output_file = output_file
@@ -12,6 +14,7 @@ class Encrypt
     message = get_message_from_input_file
     encryptor = Encryptor.new(message)
     encrypted_message = encryptor.encrypt
+    @key = encryptor.key
     write_encrypted_message_to_output_file(encrypted_message)
   end
 
@@ -31,5 +34,5 @@ end
 if __FILE__ == $0
   encrypt = Encrypt.new
   encrypt.encrypt_message
-  puts "Created #{ARGV[1]} with the key #{12345} and date #{Time.now.strftime("%s%p%y")}"
+  puts "Created #{ARGV[1]} with the key #{encrypt.key} and date #{Time.now.strftime("%s%p%y")}"
 end
