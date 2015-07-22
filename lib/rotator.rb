@@ -1,13 +1,17 @@
 require './lib/character_map'
 
 class Rotator
-  attr_reader :map
 
   def initialize
     @map = CharacterMap.new.map
   end
 
   def rotate(input, rotation_amount)
-    map[(map[input].to_i + rotation_amount) % 39]
+    character_value = (map[input].to_i + rotation_amount) % 66
+    map.key(character_value)
   end
+
+  protected
+
+  attr_reader :map
 end
