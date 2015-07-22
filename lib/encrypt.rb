@@ -34,5 +34,5 @@ end
 if __FILE__ == $0
   encrypt = Encrypt.new
   encrypt.encrypt_message
-  puts "Created #{ARGV[1]} with the key #{encrypt.key} and date #{Time.now.strftime("%s%p%y")}"
+  puts "Created #{ARGV[1]} with the key #{encrypt.key} and date #{Time.now.strftime("%d%m%y")}"
 end
