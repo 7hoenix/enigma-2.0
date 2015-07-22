@@ -24,19 +24,30 @@ class EncryptorTest < Minitest::Test
   end
 
   def test_it_can_handle_the_new_character_map
-    input = "ABCD"
+    input = "Hello I am Jamiroquai"
     fake_key = "12345"
     encryptor = Encryptor.new(input, fake_key)
 
-    assert_equal"N0cr", encryptor.encrypt
+    assert_equal"U3HV1Vsun.g7n.Eb1BQKv", encryptor.encrypt
+  end
+
+
+  def test_it_can_translate_a_string
+    skip
+    input = "lake"
+    fake_key = "29847"
+    encryptor = Encryptor.new(input, fake_key)
+
+    assert_equal"B84Q", encryptor.encrypt
   end
 
   def test_it_can_encrypt_a_value_using_the_rotator
+    skip
     input = "hello world ..end.."
     fake_key = "12345"
     encryptor = Encryptor.new(input, fake_key)
 
-    assert_equal"u\nR5.V28AGJkKWK7qW7", encryptor.encrypt
+    assert_equal "u3HV1VSY4" + "\n" + "uKWAXqWh", encryptor.encrypt
   end
 
 end

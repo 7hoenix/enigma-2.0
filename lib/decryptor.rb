@@ -4,18 +4,18 @@ require './lib/key_generator'
 require './lib/offset_calculator'
 require './lib/slicer'
 
-class Encryptor
+class Decryptor
   attr_reader :offset, :key
 
-  def initialize(message, key = KeyGenerator.generate(5))
+  def initialize(message, key, offset)
     @message = message
     @key = key
-    @offset = OffsetCalculator.calculate
+    @offset = offset
   end
 
-  def encrypt
+  def decrypt
     slices = Slicer.new.slice(message)
-    encrypted_message = slices.map do |slice|
+    decrypted_message = slices.map do |slice|
       spot_in_slice = 0
       slice.map do |character|
         rotated_character = Rotator.new.rotate(character, rotation_amount(spot_in_slice))
@@ -23,14 +23,14 @@ class Encryptor
         rotated_character
       end
     end
-   encrypted_message.join
+    decrypted_message.join
   end
 
   def rotation_amount(spot_in_slice)
-    key[spot_in_slice..spot_in_slice+1].to_i + offset.to_s[spot_in_slice].to_i
+    (key[spot_in_slice..spot_in_slice+1].to_i + offset.to_s[spot_in_slice].to_i)*-1
   end
 
   protected
 
-  attr_reader :message, :encrypted_message
+  attr_reader :message, :decrypted_message
 end
