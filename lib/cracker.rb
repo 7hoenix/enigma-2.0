@@ -17,9 +17,9 @@ class Cracker
       decryptor = Decryptor.new(encrypted_message, cracked_key, offset)
       cracked_message = decryptor.decrypt
       @cracked = true if cracked_message.end_with?("..end..")
-      puts "#{cracked_message} cracked_key: #{cracked_key}"
       increment_key unless cracked
     end
+    cracked_message
   end
 
   def increment_key

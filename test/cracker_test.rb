@@ -11,7 +11,7 @@ class CrackerTest < Minitest::Test
     offset = 1225
     cracker = Cracker.new(encrypted_message, offset)
 
-    assert_equal "hi world ..end..", cracker.cracked_message
+    assert_equal "hi world ..end..", cracker.crack
     assert_equal "19081", cracker.cracked_key
   end
 end
