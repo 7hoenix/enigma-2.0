@@ -9,15 +9,14 @@ class DecryptTest < Minitest::Test
   def test_it_reads_in_a_message_from_an_input_file
     encrypted_file = "./test/text_files/encrypted.txt"
     decrypted_file = "./test/text_files/decrypted.txt"
-    key = "12345"
-    date = "220715"
+    key = "41521"
+    date = "020315"
     decrypt = Decrypt.new(encrypted_file, decrypted_file, key, date)
 
-    encrypted_message = decrypt.read_encrypted_file
-    decrypted_message = decrypt_message(encrypted_message)
-    write_decrypted_message_to_file(decrypted_message)
+    decrypted_message = decrypt.decrypt_message
+    assert_equal "Hello I am Jamiroquai", decrypted_message
 
-    message_check = File.read(decrypted_file)
-    assert_equal "hello world ..end..", message_check
+    decrypt.write_decrypted_message_to_file(decrypted_message)
   end
+
 end
