@@ -27,7 +27,11 @@ class Encryptor
   end
 
   def rotation_amount(spot_in_slice)
-    key[spot_in_slice..spot_in_slice+1].to_i + offset.to_s[spot_in_slice].to_i
+    if spot_in_slice == 4
+      (key[0] + key[-1]).to_i + offset.to_s[spot_in_slice].to_i
+    else
+      key[spot_in_slice..spot_in_slice+1].to_i + offset.to_s[spot_in_slice].to_i
+    end
   end
 
   protected

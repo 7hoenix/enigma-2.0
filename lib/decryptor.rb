@@ -27,7 +27,11 @@ class Decryptor
   end
 
   def rotation_amount(spot_in_slice)
-    (key[spot_in_slice..spot_in_slice+1].to_i + offset.to_s[spot_in_slice].to_i)*-1
+    if spot_in_slice == 4
+      ((key[0] + key[-1]).to_i + offset.to_s[spot_in_slice].to_i)*-1
+    else
+      (key[spot_in_slice..spot_in_slice+1].to_i + offset.to_s[spot_in_slice].to_i)*-1
+    end
   end
 
   protected

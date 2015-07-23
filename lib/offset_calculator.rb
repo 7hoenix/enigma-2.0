@@ -1,7 +1,7 @@
 class OffsetCalculator
 
   def self.calculate_offset(formatted_date)
-    (formatted_date ** 2).to_s[-4..-1].to_i
+    (formatted_date ** 2).to_s[-5..-1].to_i
   end
 
   def self.calculate

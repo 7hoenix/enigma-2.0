@@ -25,12 +25,13 @@ class DecryptorTest < Minitest::Test
   end
 
   def test_it_can_decrypt_a_value_using_the_rotator
-    input = "U3HV1Vsun.g7n.Eb1BQKv"
-    fake_key = "12345"
+    input = "4.N9AAAuJXU74qXU"
+    fake_key = "22811"
+    offset = "11225"
 
     decryptor = Decryptor.new(input, fake_key)
 
-    assert_equal "Hello I am Jamiroquai", decryptor.decrypt
+    assert_equal "Hi world ..end..", decryptor.decrypt
   end
 
   def test_it_has_a_character_map
