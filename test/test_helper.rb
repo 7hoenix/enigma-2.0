@@ -1,5 +1,5 @@
-#require 'simplecov'
-#SimpleCov.start
+require 'simplecov'
+SimpleCov.start
 #lib_dir = File.expand_path('../lib', __dir)
 
 

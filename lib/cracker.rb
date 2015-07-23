@@ -16,7 +16,7 @@ class Cracker
     until cracked
       decryptor = Decryptor.new(encrypted_message, cracked_key, offset)
       cracked_message = decryptor.decrypt
-      @cracked = true if cracked_message.end_with?("..end..")
+      self.cracked = true if cracked_message.end_with?("..end..")
       increment_key unless cracked
     end
     cracked_message
@@ -26,8 +26,7 @@ class Cracker
     next_key = cracked_key.to_i
     next_key += 1
     next_key = sprintf("%05d", next_key)
-    @cracked_key = next_key
+    self.cracked_key = next_key
   end
 
 end
-
