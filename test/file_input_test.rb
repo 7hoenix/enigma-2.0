@@ -7,8 +7,7 @@ class FileInputTest < Minitest::Test
   end
 
   def test_it_loads_a_file
-    file_in = FileInput.new
     input_file = "./message.txt"
-    file_in.load_file(input_file)
+    FileInput.read_file(input_file)
   end
 end

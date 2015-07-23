@@ -10,23 +10,25 @@ class EncryptTest < Minitest::Test
   end
 
   def test_it_can_grab_input_from_a_file_encrypt_it_with_a_super_basic_encryption_and_print_it
-    skip
     input_file = "./message.txt"
     output_file = "./text_files/encrypted.txt"
     encrypt = Encrypt.new(input_file, output_file)
 
-    encrypt.encrypt_message
+    message = encrypt.get_message_from_input_file
+    encrypted_message = Encryptor.new(message).encrypt
+    encrypt.write_encrypted_message_to_output_file(encrypted_message)
 
-    output_message = File.read(output_file)
-
-    assert_equal "hi", output_message
-
+    assert_equal encrypted_message, File.read(output_file)
   end
 
   def test_it_works
-    message = "hello world ..end.."
-    encryptor = Encryptor.new(message, "12345")
-    assert_equal"u\nR5.V28AGJkKWK7qW7", encryptor.encrypt
+    input_file = "./message.txt"
+    output_file = "./text_files/encrypted.txt"
+    encrypt = Encrypt.new(input_file, output_file)
+
+    encrypted_message = encrypt.encrypt_message
+
+    assert_equal encrypted_message, File.read(output_file)
   end
 
 end

@@ -9,7 +9,7 @@ class OffsetCalculatorTest < Minitest::Test
   def test_it_returns_the_last_4_digits_of_the_square_of_todays_date
     offset = OffsetCalculator.calculate
 
-    assert_equal "1225", offset
+    assert_equal 11225, offset
   end
 
 end

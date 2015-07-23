@@ -16,6 +16,7 @@ class Encrypt
     encrypted_message = encryptor.encrypt
     @key = encryptor.key
     write_encrypted_message_to_output_file(encrypted_message)
+    encrypted_message
   end
 
   def get_message_from_input_file

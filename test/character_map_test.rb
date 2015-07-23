@@ -8,8 +8,8 @@ class CharacterMapTest < Minitest::Test
 
   def test_it_has_an_order
     char_map = CharacterMap.new
-    assert_equal 39, char_map.map.size
-    assert_equal " ", char_map.map[37]
-    assert_equal "z", char_map.map[26]
+    assert_equal 66, char_map.map.size
+    assert_equal 37, char_map.map["l"]
+    assert_equal 65, char_map.map["&"]
   end
 end

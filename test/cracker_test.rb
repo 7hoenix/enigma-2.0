@@ -7,11 +7,16 @@ class CrackerTest < Minitest::Test
   end
 
   def test_it_cracks_a_code
-    encrypted_message = "18GC8DvxQXHy73HR"
-    offset = 1225
+    encrypted_message = "zANk99DuySP 4RSP"
+    offset = 11225
     cracker = Cracker.new(encrypted_message, offset)
 
     assert_equal "hi world ..end..", cracker.crack
-    assert_equal "19081", cracker.cracked_key
+    assert_equal "83152", cracker.cracked_key
+  end
+
+  def test_it_cracks_faster
+    encrypted_message = "18GC8DvxQXHy73HR"
+    offset = 11225
   end
 end
