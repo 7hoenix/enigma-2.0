@@ -4,7 +4,7 @@ class Slicer
   end
 
   def slice(text)
-    text.chars.each_slice(4) { |group| sliced << group }
+    text.chars.each_slice(5) { |group| sliced << group }
     sliced
   end
 

@@ -34,5 +34,5 @@ end
 if __FILE__ == $0
   decrypt = Decrypt.new
   decrypt.decrypt_message
-  puts "Created 'decrypted.txt' with the key 82648 and date 030415 "
+  puts "Created 'decrypted.txt' with the key #{ARGV[2]} and date #{ARGV[3]}"
 end
